@@ -1,0 +1,1 @@
+//chama a lib externa que permite a leitura contem a nav
