@@ -16,3 +16,8 @@ Tools • Dart 3.2.3 • DevTools 2.28.4
 Nota: Em alguns dispositivos a lista nao consegue ser acessada, a funcionalidade pode ser visualizada somente com o emulador. Trabalhando na solução.
 
 ## To Do Next
+
+Adequar ao SOLID;
+Router;
+Melhorias na interface;
+Persistir lista de Favoritos;
