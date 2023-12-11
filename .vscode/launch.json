@@ -1,0 +1,11 @@
+{
+  "configurations": [
+    {
+      "name": "Flutter (M2103K19G)",
+      "program": "lib/main.dart",
+      "deviceId": "scaeyhhy85aubazh",
+      "request": "launch",
+      "type": "dart"
+    }
+  ]
+}

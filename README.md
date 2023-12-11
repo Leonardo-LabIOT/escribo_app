@@ -1,4 +1,4 @@
-# escribo_app
+# Escribo_Reader_App
 
 A new Flutter project.
 
@@ -22,3 +22,5 @@ Flutter 3.16.3 • channel stable • https://github.com/flutter/flutter.git
 Framework • revision b0366e0a3f (3 days ago) • 2023-12-05 19:46:39 -0800
 Engine • revision 54a7145303
 Tools • Dart 3.2.3 • DevTools 2.28.4
+
+## To Do Next
