@@ -19,37 +19,27 @@ class BookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: GestureDetector(
-        onTap: () {
-          // Adicione a função ou rota que você deseja chamar aqui
-          print('Card Clicado - ID: $id');
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => ReaderView(
-                id: id,
-                title: title,
-                url: url,
-              ),
-            ),
-          );
-        },
-        child: Container(
-          width: 130, // Largura fixa do Card
-          height: 255, // Altura fixa do Card
+
+    return Container(
+      // child: GestureDetector(
+        // onTap: () {
+          // print('Card Clicado - ID: $id');
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => ReaderScreen(
+          //       id: id,
+          //       title: title,
+          //       url: url,
+          //     ),
+          //   ),
+          // );
+        // },
+        // child: Container(
+          width: 130,
+          height: 255,
           child: Stack(
             children: [
-              // Exibindo a imagem do livro
-              Positioned(
-                child: Image.network(
-                  imageUrl,
-                  width: 130,
-                  // fit: BoxFit.fitWidth,
-                ),
-              ),
-
-              // Exibindo informações do livro
               Positioned(
                 bottom: 0,
                 left: 0,
@@ -59,10 +49,9 @@ class BookCard extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Título com quebra de linha se necessário
                       Text(
                         title,
-                        maxLines: 2, // Definindo o número máximo de linhas
+                        maxLines: 2,
                         overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           fontSize: 10,
@@ -70,7 +59,6 @@ class BookCard extends StatelessWidget {
                         ),
                       ),
                       SizedBox(height: 5),
-                      // Autor com quebra de linha se necessário
                       Text(
                         'Author: $author',
                         overflow: TextOverflow.ellipsis,
@@ -87,8 +75,8 @@ class BookCard extends StatelessWidget {
               ),
             ],
           ),
-        ),
-      ),
+        // ),
+      // ),
     );
   }
 }

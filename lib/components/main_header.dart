@@ -6,19 +6,10 @@ class MainHeader extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       backgroundColor: Colors.blueAccent,
       title: Center(
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text("Scribo Header", style: TextStyle(color: Colors.white)),
-            // Adicione mais widgets se necessário
-          ],
-        ),
-      ),
-      // Adicione outras propriedades da AppBar conforme necessário
+          child: Text("Escribo Header", style: TextStyle(color: Colors.white))),
     );
   }
 
   @override
-  Size get preferredSize =>
-      Size.fromHeight(kToolbarHeight); // Defina a altura desejada
+  Size get preferredSize => Size.fromHeight(kToolbarHeight);
 }

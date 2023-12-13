@@ -7,18 +7,18 @@ import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:vocsy_epub_viewer/epub_viewer.dart';
 
-class ReaderView extends StatefulWidget {
+class ReaderScreen extends StatefulWidget {
   final int id;
   final String title;
   final String url;
 
-  ReaderView({required this.id, required this.title, required this.url});
+  ReaderScreen({required this.id, required this.title, required this.url});
 
   @override
-  _ReaderViewState createState() => _ReaderViewState();
+  _ReaderScreenState createState() => _ReaderScreenState();
 }
 
-class _ReaderViewState extends State<ReaderView> {
+class _ReaderScreenState extends State<ReaderScreen> {
   bool loading = false;
   Dio dio = Dio();
   String filePath = "";
@@ -66,24 +66,16 @@ class _ReaderViewState extends State<ReaderView> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("${widget.title}"),
-        ),
-        body: Center(
-          child: loading
-              ? Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircularProgressIndicator(),
-                    Text('Downloading.... E-pub'),
-                  ],
-                )
-              : Container(), // Nenhum widget visível quando não está carregando
-        ),
-      ),
+    return Center(
+      child: loading
+          ? Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(),
+                Text('Downloading.... E-pub'),
+              ],
+            )
+          : Text("Error"), // Nenhum widget visível quando não está carregando
     );
   }
 
@@ -153,3 +145,35 @@ class _ReaderViewState extends State<ReaderView> {
     );
   }
 }
+
+// import 'package:escribo_app/components/book_card.dart';
+// import 'package:flutter/material.dart';
+
+// class ReaderScreen extends StatelessWidget {
+//   final id;
+//   final url;
+//   final title;
+//   ReaderScreen({required this.id, required this.title, required this.url});
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: AppBar(
+//         title: const Text('Escribo - Reader'),
+//       ),
+//       body: Column(children: [
+//         BookCard(
+//             id: id,
+//             title: title,
+//             author: 'author',
+//             imageUrl: 'imageUrl',
+//             url: url),
+//         ElevatedButton(
+//           onPressed: () {
+//             Navigator.pop(context);
+//           },
+//           child: const Text('Go back!'),
+//         ),
+//       ]),
+//     );
+//   }
+// }

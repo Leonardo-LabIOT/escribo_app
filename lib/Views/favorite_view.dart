@@ -1,36 +1,24 @@
-import 'package:escribo_app/components/book_card.dart';
-import 'package:flutter/material.dart';
-
-class FavoriteScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Text("Favorites");
-  }
-}
+// import 'package:escribo_app/components/book_card.dart';
+// import 'package:escribo_app/components/fetch_data.dart';
+// import 'package:escribo_app/components/nav_bar.dart';
+// import 'package:flutter/material.dart';
 
 // class FavoriteScreen extends StatelessWidget {
-//   final Future<List<dynamic>> fetchDataFuture;
-//   final Set<int> favoriteList; // Adicionando a lista de favoritos
-
-//   FavoriteScreen({required this.fetchDataFuture, required this.favoriteList});
+//   FavoriteScreen();
 
 //   @override
 //   Widget build(BuildContext context) {
-//     return _LibraryScreen(
-//         fetchDataFuture: fetchDataFuture, favoriteList: favoriteList);
+//     return _FavoriteScreen();
 //   }
 // }
 
-// class _LibraryScreen extends StatelessWidget {
-//   final Future<List<dynamic>> fetchDataFuture;
-//   final Set<int> favoriteList; // Adicionando a lista de favoritos
-
-//   _LibraryScreen({required this.fetchDataFuture, required this.favoriteList});
+// class _FavoriteScreen extends StatelessWidget {
+//   _FavoriteScreen();
 
 //   @override
 //   Widget build(BuildContext context) {
 //     return FutureBuilder<List<dynamic>>(
-//       future: fetchDataFuture,
+//       future: fetchData(),
 //       builder: (context, snapshot) {
 //         if (snapshot.connectionState == ConnectionState.waiting) {
 //           return Center(child: CircularProgressIndicator());
@@ -41,29 +29,38 @@ class FavoriteScreen extends StatelessWidget {
 //         } else {
 //           List<dynamic> books = snapshot.data!.toList();
 //           // Filtrando apenas os livros que estão na lista de favoritos
-//           List<dynamic> favoriteBooks =
-//               books.where((book) => favoriteList.contains(book['id'])).toList();
+//           List<dynamic> favoriteBooks = [];
+//           // books.where((book) => future.contains(book['id'])).toList();
 
-//           return GridView.builder(
-//             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-//               crossAxisCount: 3,
-//               crossAxisSpacing: 5.0,
-//               mainAxisSpacing: 5.0,
-//               childAspectRatio: 0.5,
+//           return Scaffold(
+//             appBar: AppBar(
+//               backgroundColor: Colors.blueAccent,
+//               title: Text("Escribo - Favorites",
+//                   style: TextStyle(color: Colors.white)),
 //             ),
-//             itemCount: favoriteBooks.length,
-//             itemBuilder: (context, index) {
-//               var book = favoriteBooks[index];
-//               return BookCard(
-//                 id: book['id'],
-//                 title: book['title'],
-//                 author: book['author'],
-//                 url: book['download_url'],
-//                 imageUrl: book['cover_url'],
-//                 isFavorite: favoriteList.contains(
-//                     book['id']), // Verifica se está na lista de favoritos
-//               );
-//             },
+//             body: GridView.builder(
+//               key: key,
+//               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+//                 crossAxisCount: 3,
+//                 crossAxisSpacing: 5.0,
+//                 mainAxisSpacing: 5.0,
+//                 childAspectRatio: 0.5,
+//               ),
+//               itemCount: favoriteBooks.length,
+//               itemBuilder: (context, index) {
+//                 var book = favoriteBooks[index];
+//                 return Hero(
+//                   tag:  book['id'],
+//                   child: BookCard(
+//                     id: book['id'],
+//                     title: book['title'],
+//                     author: book['author'],
+//                     url: book['download_url'],
+//                     imageUrl: book['cover_url'],
+//                   ),
+//                 );
+//               },
+//             ),
 //           );
 //         }
 //       },

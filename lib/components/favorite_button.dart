@@ -40,15 +40,18 @@ class _FavoriteButtonState extends State<FavoriteButton> {
 
   @override
   Widget build(BuildContext context) {
-    return FloatingActionButton(
-      onPressed: () {
+    return InkWell(
+      onTap: () {
         setState(() {
           isFavorite = !isFavorite;
           saveFavoriteState();
         });
       },
-      backgroundColor: isFavorite ? Colors.red[900] : Colors.white,
-      child: Icon(isFavorite ? Icons.favorite : Icons.favorite_border),
+      child: Icon(
+        isFavorite ? Icons.star : Icons.star_border,
+        size: 48,
+        color: isFavorite ? Colors.amber[300] : Colors.black,
+      ),
     );
   }
 }

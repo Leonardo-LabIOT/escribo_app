@@ -1,1 +1,0 @@
-//controla a troca de paginas
