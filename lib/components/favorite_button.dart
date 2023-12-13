@@ -20,6 +20,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
 
   @override
   void initState() {
+    isFavorite = false;
     super.initState();
     loadFavoriteState();
   }

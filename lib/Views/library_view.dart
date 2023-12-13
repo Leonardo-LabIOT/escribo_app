@@ -15,7 +15,7 @@ class _LibraryScreen extends StatelessWidget {
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           // Enquanto aguarda a conclusão do futuro, você pode exibir um indicador de carregamento
-          return CircularProgressIndicator();
+          return Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
           // Se ocorrer um erro ao obter os dados, você pode exibir uma mensagem de erro
           return Text('Erro ao obter dados: ${snapshot.error}');
@@ -27,10 +27,10 @@ class _LibraryScreen extends StatelessWidget {
           List<dynamic> books = snapshot.data!.toList();
           return GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 3, // Defina o número de colunas desejado
-              crossAxisSpacing: 5.0, // Espaçamento horizontal entre os itens
-              mainAxisSpacing: 5.0, // Espaçamento vertical entre os itens
-              childAspectRatio: 0.7, // Relação entre largura e altura dos itens
+              crossAxisCount: 3,
+              crossAxisSpacing: 5.0,
+              mainAxisSpacing: 5.0,
+              childAspectRatio: 0.5,
             ),
             itemCount: books.length,
             itemBuilder: (context, index) {
@@ -39,6 +39,7 @@ class _LibraryScreen extends StatelessWidget {
                   id: book['id'],
                   title: book['title'],
                   author: book['author'],
+                  url: book['download_url'],
                   imageUrl: book[
                       'cover_url'] // Substitua com a chave correta para a URL da imagem
                   );
