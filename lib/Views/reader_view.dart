@@ -66,16 +66,25 @@ class _ReaderScreenState extends State<ReaderScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: loading
-          ? Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CircularProgressIndicator(),
-                Text('Downloading.... E-pub'),
-              ],
-            )
-          : Text("Error"), // Nenhum widget visível quando não está carregando
+    return Scaffold(
+      appBar: AppBar(
+          backgroundColor: Colors.blueAccent, title: Text("Escribo Viewer")),
+      body: Center(
+        child: loading
+            ? Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  CircularProgressIndicator(),
+                  Text('Downloading.... E-pub'),
+                ],
+              )
+            : ElevatedButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Go back!'),
+              ), // Nenhum widget visível quando não está carregando
+      ),
     );
   }
 
@@ -124,8 +133,8 @@ class _ReaderScreenState extends State<ReaderScreen> {
   void openEpub() {
     VocsyEpub.setConfig(
       themeColor: Theme.of(context).primaryColor,
-      identifier: "iosBook",
-      scrollDirection: EpubScrollDirection.ALLDIRECTIONS,
+      identifier: "Book",
+      scrollDirection: EpubScrollDirection.HORIZONTAL,
       allowSharing: true,
       enableTts: true,
       nightMode: true,
@@ -145,35 +154,3 @@ class _ReaderScreenState extends State<ReaderScreen> {
     );
   }
 }
-
-// import 'package:escribo_app/components/book_card.dart';
-// import 'package:flutter/material.dart';
-
-// class ReaderScreen extends StatelessWidget {
-//   final id;
-//   final url;
-//   final title;
-//   ReaderScreen({required this.id, required this.title, required this.url});
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: const Text('Escribo - Reader'),
-//       ),
-//       body: Column(children: [
-//         BookCard(
-//             id: id,
-//             title: title,
-//             author: 'author',
-//             imageUrl: 'imageUrl',
-//             url: url),
-//         ElevatedButton(
-//           onPressed: () {
-//             Navigator.pop(context);
-//           },
-//           child: const Text('Go back!'),
-//         ),
-//       ]),
-//     );
-//   }
-// }

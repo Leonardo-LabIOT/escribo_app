@@ -19,27 +19,33 @@ class BookCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Container(
-      // child: GestureDetector(
-        // onTap: () {
-          // print('Card Clicado - ID: $id');
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => ReaderScreen(
-          //       id: id,
-          //       title: title,
-          //       url: url,
-          //     ),
-          //   ),
-          // );
-        // },
-        // child: Container(
+      child: GestureDetector(
+        onTap: () {
+          print('Card Clicado - ID: $id');
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => ReaderScreen(
+                id: id,
+                title: title,
+                url: url,
+              ),
+            ),
+          );
+        },
+        child: Container(
           width: 130,
           height: 255,
           child: Stack(
             children: [
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: Image.network(this.imageUrl,
+                    alignment: Alignment.topCenter),
+              ),
               Positioned(
                 bottom: 0,
                 left: 0,
@@ -75,8 +81,8 @@ class BookCard extends StatelessWidget {
               ),
             ],
           ),
-        // ),
-      // ),
+        ),
+      ),
     );
   }
 }

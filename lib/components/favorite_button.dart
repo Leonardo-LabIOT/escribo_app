@@ -16,26 +16,19 @@ class FavoriteButton extends StatefulWidget {
 }
 
 class _FavoriteButtonState extends State<FavoriteButton> {
-  late bool isFavorite;
+  late bool isFavorite = false;
 
   @override
   void initState() {
-    isFavorite = false;
     super.initState();
     loadFavoriteState();
   }
 
   Future<void> loadFavoriteState() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool favorite = await getFavorite(widget.id);
     setState(() {
-      isFavorite = prefs.getBool('favorite_${widget.id}') ?? false;
+      isFavorite = favorite;
     });
-  }
-
-  void saveFavoriteState() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('favorite_${widget.id}', isFavorite);
-    widget.onFavoriteChanged(); // Notificar que o estado de favorito mudou
   }
 
   @override
@@ -44,7 +37,7 @@ class _FavoriteButtonState extends State<FavoriteButton> {
       onTap: () {
         setState(() {
           isFavorite = !isFavorite;
-          saveFavoriteState();
+          setFavorite(widget.id, isFavorite);
         });
       },
       child: Icon(
@@ -54,4 +47,14 @@ class _FavoriteButtonState extends State<FavoriteButton> {
       ),
     );
   }
+}
+
+Future<bool> getFavorite(int id) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  return prefs.getBool('favorite_$id') ?? false;
+}
+
+Future<void> setFavorite(int id, bool isFavorite) async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setBool('favorite_$id', isFavorite);
 }

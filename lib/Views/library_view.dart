@@ -1,6 +1,5 @@
 import 'package:escribo_app/components/book_card.dart';
 import 'package:escribo_app/components/fetch_data.dart';
-import 'package:escribo_app/components/nav_bar.dart';
 import 'package:flutter/material.dart';
 
 class _LibraryScreen extends StatelessWidget {
@@ -24,16 +23,28 @@ class _LibraryScreen extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.blueAccent,
-              title: Text("Escribo - Library",
-                  style: TextStyle(color: Colors.white)),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Escribo - Library",
+                      style: TextStyle(color: Colors.white)),
+                  IconButton(
+                    icon: Icon(
+                      Icons.star,
+                      color: Colors.amber,
+                      size: 36,
+                    ),
+                    onPressed: () {
+                      Navigator.pushNamed(context, '/favorites');
+                    },
+                  ),
+                ],
+              ),
             ),
             body: Column(
               children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/1');
-                  },
-                  child: const Text('Push'),
+                SizedBox(
+                  height: 30,
                 ),
                 Expanded(
                   child: GridView.builder(
@@ -47,10 +58,7 @@ class _LibraryScreen extends StatelessWidget {
                     itemCount: books.length,
                     itemBuilder: (context, index) {
                       var book = books[index];
-                      return
-                          // Hero(
-                          // tag: 'book_${book['id']}',child:
-                          BookCard(
+                      return BookCard(
                         id: book['id'],
                         title: book['title'],
                         author: book['author'],

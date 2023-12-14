@@ -1,1 +1,0 @@
-// possui um botao Download/Remove - Exige confirmação
