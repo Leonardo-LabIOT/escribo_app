@@ -6,7 +6,7 @@ A new Flutter project - Aplicativo desenvolvido como parte de processo seletivo 
 
 Para testar o aplicativo, siga os passos abaixo:
 
-1. Vá até a seção de [Releases](https://github.com/Leonardo-LabIOT/escribo_app/releases/tag/Escribo_App) no GitHub.
+1. Vá até a seção de [Releases](https://github.com/Leonardo-LabIOT/escribo_app/releases/tag/Escribo_latest) no GitHub.
 2. Faça o download do arquivo APK mais recente.
 
 ## Funcionalidades Principais
