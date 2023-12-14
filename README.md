@@ -21,7 +21,7 @@ Para testar o aplicativo, siga os passos abaixo:
 
 ## Notas Importantes
 
-- Certifique-se de conceder as permissões necessárias para armazenamento de dados, em caso de falha.
+- Certifique-se de conceder as permissões necessárias para armazenamento de dados, em caso de falha - pode ser necessário autorização externa, via permissões do dispositivo.
 
 - A persistência da lista de favoritos é mantida localmente por enquanto, com planos de migração para o Firebase em futuras atualizações.
 
