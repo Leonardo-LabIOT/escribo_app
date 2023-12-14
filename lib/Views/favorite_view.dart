@@ -14,49 +14,68 @@ class _FavoriteScreen extends StatelessWidget {
       future: fetchDataFuture,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return Container(child: Center(child: CircularProgressIndicator()));
         } else if (snapshot.hasError) {
-          return Text('Erro ao obter dados: ${snapshot.error}');
+          return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.blueAccent,
+                title: Text("ERROR", style: TextStyle(color: Colors.white)),
+              ),
+              body: Center(
+                  child: Text('Erro ao obter dados: ${snapshot.error}')));
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return Text('Nenhum livro encontrado.');
+          return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.blueAccent,
+                title: Text("Escribo - Library",
+                    style: TextStyle(color: Colors.white)),
+              ),
+              body: Center(
+                child: Text(
+                  'Nenhum Livro Favorito!',
+                  style: TextStyle(fontSize: 32),
+                ),
+              ));
         } else {
           List<dynamic> books = snapshot.data!;
-
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.blueAccent,
               title: Text("Escribo - Library",
                   style: TextStyle(color: Colors.white)),
             ),
-            body: Column(
-              children: [
-                SizedBox(
-                  height: 30,
-                ),
-                Expanded(
-                  child: GridView.builder(
-                    padding: EdgeInsets.all(15),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      crossAxisSpacing: 5.0,
-                      mainAxisSpacing: 5.0,
-                      childAspectRatio: 0.5,
-                    ),
-                    itemCount: books.length,
-                    itemBuilder: (context, index) {
-                      var book = books[index];
-                      return BookCard(
-                        id: book['id'],
-                        title: book['title'],
-                        author: book['author'],
-                        url: book['download_url'],
-                        imageUrl: book['cover_url'],
-                      );
-                    },
-                  ),
-                ),
-              ],
-            ),
+            body: (books.length > 0)
+                ? Column(
+                    children: [
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Expanded(
+                        child: GridView.builder(
+                          padding: EdgeInsets.all(15),
+                          gridDelegate:
+                              SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            crossAxisSpacing: 5.0,
+                            mainAxisSpacing: 5.0,
+                            childAspectRatio: 0.5,
+                          ),
+                          itemCount: books.length,
+                          itemBuilder: (context, index) {
+                            var book = books[index];
+                            return BookCard(
+                              id: book['id'],
+                              title: book['title'],
+                              author: book['author'],
+                              url: book['download_url'],
+                              imageUrl: book['cover_url'],
+                            );
+                          },
+                        ),
+                      ),
+                    ],
+                  )
+                : Center(child: Text("Nenhum Favorito")),
           );
         }
       },
